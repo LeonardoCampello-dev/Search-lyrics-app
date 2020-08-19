@@ -17,8 +17,12 @@ const getMoreSongs = async url => {
 
 const insertNextAndPrevButtons = ({ prev, next }) => {
     prevAndNextContainer.innerHTML = `   
-        ${prev ? `<button class="btn" onClick="getMoreSongs('${prev}')">Anteriores</button>` : ''}
-        ${next ? `<button class="btn" onClick="getMoreSongs('${next}')">Próximas</button>` : ''}
+        ${prev ? `<button class="btn" onClick="getMoreSongs('${prev}')">
+                    <i class="material-icons">chevron_left</i>
+                  </button>` : ''}
+        ${next ? `<button class="btn" onClick="getMoreSongs('${next}')">
+                    <i class="material-icons">chevron_right</i>
+                  </button>` : ''}
     `
 
 }
@@ -74,7 +78,12 @@ form.addEventListener("submit", handleFormSubmit)
 const insertLyricsIntoPage = ({ lyrics, artist, title }) => {
     songsContainer.innerHTML = `
     <li class="lyrics-container">
-        <h2><strong>${title}</strong> - ${artist}</h2>
+        <h2>
+            <span>
+                <i class="material-icons">audiotrack</i>
+            </span>
+            <strong>${title}</strong> - ${artist}
+        </h2>
         <p class="lyrics">${lyrics}</p>
     </li>
 `

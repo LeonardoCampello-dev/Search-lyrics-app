@@ -1,30 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Lyrics App</title>
-    <link rel="stylesheet" href="./style.css">
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Lyrics App</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+
+  <div class="container">
     <header>
-      <h1>Busca letras</h1>
+      <h1>
+        Search lyrics
+        <span>
+          <i class="material-icons">
+            headset
+          </i>
+        </span>
+      </h1>
 
       <form id="form">
+        
         <input 
-          autofocus
+          autofocus 
           id="search" 
           type="text" 
-          placeholder="Insira o nome do artista ou da música..."
+          placeholder="Enter the name of the artist or song" 
         />
 
-        <button>Buscar</button>
+        <button>
+          Search
+          <span>
+            <i class="material-icons">search</i>
+          </span>
+        </button>
+
       </form>
+
     </header>
 
     <ul id="songs-container" class="songs-container songs"></ul>
 
     <div id="prev-and-next-container" class="prev-and-next-container"></div>
 
-    <script src="./app.js"></script>
-  </body>
+  </div>
+  <script src="./app.js"></script>
+</body>
+
 </html>
