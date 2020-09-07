@@ -18,5 +18,18 @@ Search Lyrics is an application that finds lyrics for your favorite songs
 
 ## 🎥 Demonstration 
 
-![header](.github/header.png)
-![gif](.github/LyricsApp.gif)
+**Home** 🏡
+
+![home](.github/home.png)
+
+---
+
+**Search** 🔎
+
+![search](.github/search.png)
+
+---
+
+**Lyrics** 🎸 
+
+![lyrics](.github/lyrics.png)
