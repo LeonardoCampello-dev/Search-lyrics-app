@@ -1,6 +1,5 @@
 <h1 align="center">
-    <img src="./assets/header.svg" width="450">
-    
+    <img src="./assets/header.svg" width="250">
 </h1>
 
 <h1 align="center">Search Lyrics 🎶</h1>
@@ -21,14 +20,6 @@ Search Lyrics is an application that finds lyrics for your favorite songs
 **Home** 🏡
 
 ![home](.github/home.png)
-
----
-
-**Search** 🔎
-
-![search](.github/search.png)
-
----
 
 **Lyrics** 🎸 
 
