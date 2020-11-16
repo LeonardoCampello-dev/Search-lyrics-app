@@ -17,11 +17,11 @@ const getMoreSongs = async url => {
 
 const insertNextAndPrevButtons = ({ prev, next }) => {
     prevAndNextContainer.innerHTML = `   
-        ${prev ? `<button class="btn" onClick="getMoreSongs('${prev}')">
-                    <i class="material-icons">chevron_left</i>
+        ${prev ? `<button class='btn' onClick='getMoreSongs('${prev}')'>
+                    <i class='material-icons'>chevron_left</i>
                   </button>` : ''}
-        ${next ? `<button class="btn" onClick="getMoreSongs('${next}')">
-                    <i class="material-icons">chevron_right</i>
+        ${next ? `<button class='btn' onClick='getMoreSongs('${next}')'>
+                    <i class='material-icons'>chevron_right</i>
                   </button>` : ''}
     `
 
@@ -29,18 +29,18 @@ const insertNextAndPrevButtons = ({ prev, next }) => {
 
 const insertSongsIntoPage = ({ data, prev, next }) => {
     songsContainer.innerHTML = data.map(({ artist: { name }, title }) => `
-        <li class="song">
-            <span class="song-artist">
+        <li class='song'>
+            <span class='song-artist'>
                 <strong>${name}</strong> - ${title}
             </span>
 
             <button 
-                class="btn" 
-                data-artist="${name}"
-                data-song-title="${title}"
+                class='btn' 
+                data-artist='${name}'
+                data-song-title='${title}'
             >Ver letra</button>
         </li>`
-    ).join("")
+    ).join('')
 
 
     if (prev || next) {
@@ -65,7 +65,7 @@ const handleFormSubmit = event => {
     searchInput.focus()
 
     if (!searchTerm) {
-        songsContainer.innerHTML = `<li class="warning-message">Por favor, digite um termo válido 🙁</li>`
+        songsContainer.innerHTML = `<li class='warning-message'>Por favor, digite um termo válido 🙁</li>`
 
         return
     }
@@ -73,25 +73,25 @@ const handleFormSubmit = event => {
     fetchSongs(searchTerm)
 }
 
-form.addEventListener("submit", handleFormSubmit)
+form.addEventListener('submit', handleFormSubmit)
 
 const insertLyricsIntoPage = ({ lyrics, artist, title }) => {
     songsContainer.innerHTML = `
-    <li class="lyrics-container">
+    <li class='lyrics-container'>
         <h2>
             <span>
-                <i class="material-icons">audiotrack</i>
+                <i class='material-icons'>audiotrack</i>
             </span>
             <strong>${title}</strong> - ${artist}
         </h2>
-        <p class="lyrics">${lyrics}</p>
+        <p class='lyrics'>${lyrics}</p>
     </li>
 `
 }
 
 const fetchLyrics = async (artist, title) => {
     const data = await fetchData(`${apiURL}/v1/${artist}/${title}`)
-    const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, "<br>")
+    const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, '<br>')
 
     insertLyricsIntoPage({ lyrics, artist, title })
 }
@@ -99,9 +99,9 @@ const fetchLyrics = async (artist, title) => {
 const handleSongsContainerClick = event => {
     const clickedElement = event.target
 
-    if (clickedElement.tagName === "BUTTON") {
-        const artist = clickedElement.getAttribute("data-artist")
-        const songTitle = clickedElement.getAttribute("data-song-title")
+    if (clickedElement.tagName === 'BUTTON') {
+        const artist = clickedElement.getAttribute('data-artist')
+        const songTitle = clickedElement.getAttribute('data-song-title')
 
         prevAndNextContainer.innerHTML = ''
 
@@ -109,4 +109,4 @@ const handleSongsContainerClick = event => {
     }
 }
 
-songsContainer.addEventListener("click", handleSongsContainerClick)
+songsContainer.addEventListener('click', handleSongsContainerClick)
