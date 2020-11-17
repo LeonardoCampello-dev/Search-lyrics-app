@@ -2,7 +2,9 @@
     <img src="./assets/header.svg" width="250">
 </h1>
 
-<h1 align="center">Search Lyrics 🎶</h1>
+<h1 align="center">
+    <a href="https://leonardocampello-dev.github.io/Search-lyrics-app/">Search Lyrics 🎶</a>
+</h1>
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
 
