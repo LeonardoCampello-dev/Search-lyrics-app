@@ -1,47 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lyrics App</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Lyrics App</title>
-  <link rel="stylesheet" href="./styles.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-</head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>
+          Search lyrics
+          <span>
+            <i class="material-icons"> headset </i>
+          </span>
+        </h1>
 
-<body>
+        <form id="form">
+          <input
+            autofocus
+            id="search"
+            type="text"
+            placeholder="Enter the name of the artist or song"
+          />
 
-  <div class="container">
-    <header>
-      <h1>
-        Search lyrics
-        <span>
-          <i class="material-icons">
-            headset
-          </i>
-        </span>
-      </h1>
+          <button>Search</button>
+        </form>
+      </header>
 
-      <form id="form">
-        
-        <input 
-          autofocus 
-          id="search" 
-          type="text" 
-          placeholder="Enter the name of the artist or song" 
-        />
+      <ul id="songs-container" class="songs-container songs"></ul>
 
-        <button>Search</button>
-
-      </form>
-
-    </header>
-
-    <ul id="songs-container" class="songs-container songs"></ul>
-
-    <div id="prev-and-next-container" class="prev-and-next-container"></div>
-
-  </div>
-  <script src="./app.js"></script>
-</body>
-
+      <div id="prev-and-next-container" class="prev-and-next-container"></div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
 </html>

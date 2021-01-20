@@ -1,34 +1,43 @@
-const form = document.querySelector('#form')
-const searchInput = document.querySelector('#search')
-const songsContainer = document.querySelector('#songs-container')
-const prevAndNextContainer = document.querySelector('#prev-and-next-container')
+const form = document.querySelector("#form");
+const searchInput = document.querySelector("#search");
+const songsContainer = document.querySelector("#songs-container");
+const prevAndNextContainer = document.querySelector("#prev-and-next-container");
 
-const apiURL = `https://api.lyrics.ovh`
+const apiURL = `https://api.lyrics.ovh`;
 
-const fetchData = async url => {
-    const response = await fetch(url)
-    return await response.json()
-}
+const fetchData = async (url) => {
+  const response = await fetch(url);
+  return await response.json();
+};
 
-const getMoreSongs = async url => {
-    const data = await fetchData(`https://cors-anywhere.herokuapp.com/${url}`)
-    insertSongsIntoPage(data)
-}
+const getMoreSongs = async (url) => {
+  const data = await fetchData(`https://cors-anywhere.herokuapp.com/${url}`);
+  insertSongsIntoPage(data);
+};
 
 const insertNextAndPrevButtons = ({ prev, next }) => {
-    prevAndNextContainer.innerHTML = `   
-        ${prev ? `<button class='btn' onClick='getMoreSongs('${prev}')'>
+  prevAndNextContainer.innerHTML = `   
+        ${
+          prev
+            ? `<button class='btn' onClick='getMoreSongs('${prev}')'>
                     <i class='material-icons'>chevron_left</i>
-                  </button>` : ''}
-        ${next ? `<button class='btn' onClick='getMoreSongs('${next}')'>
+                  </button>`
+            : ""
+        }
+        ${
+          next
+            ? `<button class='btn' onClick='getMoreSongs('${next}')'>
                     <i class='material-icons'>chevron_right</i>
-                  </button>` : ''}
-    `
-
-}
+                  </button>`
+            : ""
+        }
+    `;
+};
 
 const insertSongsIntoPage = ({ data, prev, next }) => {
-    songsContainer.innerHTML = data.map(({ artist: { name }, title }) => `
+  songsContainer.innerHTML = data
+    .map(
+      ({ artist: { name }, title }) => `
         <li class='song'>
             <span class='song-artist'>
                 <strong>${name}</strong> - ${title}
@@ -40,43 +49,43 @@ const insertSongsIntoPage = ({ data, prev, next }) => {
                 data-song-title='${title}'
             >Ver letra</button>
         </li>`
-    ).join('')
+    )
+    .join("");
 
+  if (prev || next) {
+    insertNextAndPrevButtons({ prev, next });
 
-    if (prev || next) {
-        insertNextAndPrevButtons({ prev, next })
+    return;
+  }
 
-        return
-    }
+  prevAndNextContainer.innerHTML = "";
+};
 
-    prevAndNextContainer.innerHTML = ''
-}
+const fetchSongs = async (term) => {
+  const data = await fetchData(`${apiURL}/suggest/${term}`);
+  insertSongsIntoPage(data);
+};
 
-const fetchSongs = async term => {
-    const data = await fetchData(`${apiURL}/suggest/${term}`)
-    insertSongsIntoPage(data)
-}
+const handleFormSubmit = (event) => {
+  event.preventDefault();
 
-const handleFormSubmit = event => {
-    event.preventDefault()
+  const searchTerm = searchInput.value.trim();
+  searchInput.value = "";
+  searchInput.focus();
 
-    const searchTerm = searchInput.value.trim()
-    searchInput.value = ''
-    searchInput.focus()
+  if (!searchTerm) {
+    songsContainer.innerHTML = `<li class='warning-message'>Por favor, digite um termo válido 🙁</li>`;
 
-    if (!searchTerm) {
-        songsContainer.innerHTML = `<li class='warning-message'>Por favor, digite um termo válido 🙁</li>`
+    return;
+  }
 
-        return
-    }
+  fetchSongs(searchTerm);
+};
 
-    fetchSongs(searchTerm)
-}
-
-form.addEventListener('submit', handleFormSubmit)
+form.addEventListener("submit", handleFormSubmit);
 
 const insertLyricsIntoPage = ({ lyrics, artist, title }) => {
-    songsContainer.innerHTML = `
+  songsContainer.innerHTML = `
     <li class='lyrics-container'>
         <h2>
             <span>
@@ -86,27 +95,27 @@ const insertLyricsIntoPage = ({ lyrics, artist, title }) => {
         </h2>
         <p class='lyrics'>${lyrics}</p>
     </li>
-`
-}
+`;
+};
 
 const fetchLyrics = async (artist, title) => {
-    const data = await fetchData(`${apiURL}/v1/${artist}/${title}`)
-    const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, '<br>')
+  const data = await fetchData(`${apiURL}/v1/${artist}/${title}`);
+  const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, "<br>");
 
-    insertLyricsIntoPage({ lyrics, artist, title })
-}
+  insertLyricsIntoPage({ lyrics, artist, title });
+};
 
-const handleSongsContainerClick = event => {
-    const clickedElement = event.target
+const handleSongsContainerClick = (event) => {
+  const clickedElement = event.target;
 
-    if (clickedElement.tagName === 'BUTTON') {
-        const artist = clickedElement.getAttribute('data-artist')
-        const songTitle = clickedElement.getAttribute('data-song-title')
+  if (clickedElement.tagName === "BUTTON") {
+    const artist = clickedElement.getAttribute("data-artist");
+    const songTitle = clickedElement.getAttribute("data-song-title");
 
-        prevAndNextContainer.innerHTML = ''
+    prevAndNextContainer.innerHTML = "";
 
-        fetchLyrics(artist, songTitle)
-    }
-}
+    fetchLyrics(artist, songTitle);
+  }
+};
 
-songsContainer.addEventListener('click', handleSongsContainerClick)
+songsContainer.addEventListener("click", handleSongsContainerClick);

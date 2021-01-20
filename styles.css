@@ -1,18 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
 
 :root {
   --primary-color: #05be58;
   --primary-color-darker: #087238;
-  --secondary-color: #8357E5;
-  --secondary-color-darker: #6A6180;
-  --bg-color: #2F3437;
+  --secondary-color: #8357e5;
+  --secondary-color-darker: #6a6180;
+  --bg-color: #2f3437;
 }
 
 * {
   margin: 0;
   padding: 0;
-  
+
   box-sizing: border-box;
 
   border: none;
@@ -25,16 +25,17 @@ body,
 input,
 button,
 textarea {
-  font-family: 'Poppins', 'monospace';
+  font-family: "Poppins", "monospace";
 }
 
 html {
   font-size: 62.5%;
 }
 
-html, body {
+html,
+body {
   min-height: 100vh;
-} 
+}
 
 body {
   background-color: #fefefe;
@@ -47,12 +48,12 @@ body {
 }
 
 .warning-message {
-  color: #FF4655;
-  
+  color: #ff4655;
+
   font-weight: bold;
   font-size: 2.4rem;
   line-height: 3.4rem;
-  
+
   text-align: center;
 }
 
@@ -64,7 +65,7 @@ header {
   background-size: contain;
 
   padding-bottom: 96px;
-  
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,8 +73,8 @@ header {
 }
 
 header h1 {
-  font-family: 'Bangers', cursive;
-  
+  font-family: "Bangers", cursive;
+
   color: var(--secondary-color);
   font-size: 4.2rem;
   line-height: 5.2rem;
@@ -105,25 +106,25 @@ form input::placeholder {
   color: var(--secondary-color-darker);
   font-size: 1.4rem;
   line-height: 2.4rem;
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
 }
 
 form button {
   padding: 16px 32px;
-  
+
   background-color: var(--secondary-color-darker);
   border-radius: 0 8px 8px 0;
 
   color: #fff;
-  
+
   font-size: 1.4rem;
   line-height: 2.4rem;
 
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
 
-  transition: .2s;
+  transition: 0.2s;
 }
 
 form button:hover {
@@ -157,7 +158,7 @@ form button {
 
   font-size: 1.4rem;
   text-transform: uppercase;
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
 }
 
 .songs-container .btn {
@@ -172,7 +173,7 @@ form button {
 
   margin-left: 12px;
 
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .songs-container .btn:hover {
@@ -184,7 +185,7 @@ form button {
 .lyrics-container {
   background-color: var(--bg-color);
   border-radius: 24px;
-  
+
   padding: 32px;
 }
 
@@ -220,9 +221,9 @@ form button {
   color: #fff;
   font-size: 25%;
 
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .prev-and-next-container .btn:hover {
- background-color: var(--secondary-color-darker); 
+  background-color: var(--secondary-color-darker);
 }
